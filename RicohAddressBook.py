@@ -195,10 +195,6 @@ class RicohAddressBook(object):
             element = find_element(self.__driver)
             element.clear()
             element.send_keys(value)
-        tag_label = self.get_tag_label(name)
-        if tag_label is not None:
-            tag = Select(self.__driver.find_element(By.NAME, "entryTagInfoIn"))
-            tag.select_by_visible_text(tag_label)
         if not userid_exists:
             # New users should not be added automatically to frequent user
             # list.  For updates - do not touch this - allows to set this
@@ -209,7 +205,10 @@ class RicohAddressBook(object):
             ):
                 if option.get_attribute("value") == '2':
                     option.click()
-                    break
+        tag_label = self.get_tag_label(name)
+        if tag_label is not None:
+            tag = Select(self.__driver.find_element(By.NAME, "entryTagInfoIn"))
+            tag.select_by_visible_text(tag_label)
         popup = self.__driver.find_element(By.ID, "additional")
         self.__driver.find_element(By.LINK_TEXT, "OK").click()
         popup_not_displayed = lambda x: not popup.is_displayed()
