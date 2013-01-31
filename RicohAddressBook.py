@@ -127,21 +127,21 @@ class RicohAddressBook(object):
         """ Select tag label based on first character in name
         """
         char = name[0].upper()
-        if char in 'ÆÅÄ':
-            char = 'A'
-        if char in 'ØÖ̈́':
-            char = 'O'
+        if char in u'ÆÅÄ':
+            char = u'A'
+        if char in u'ØÖ̈́':
+            char = u'O'
         for tag in (
-            'AB',
-            'CD',
-            'EF',
-            'GH',
-            'IJK',
-            'LMN',
-            'OPQ',
-            'RST',
-            'UVW',
-            'XYZ',
+            u'AB',
+            u'CD',
+            u'EF',
+            u'GH',
+            u'IJK',
+            u'LMN',
+            u'OPQ',
+            u'RST',
+            u'UVW',
+            u'XYZ',
         ):
             if char in tag:
                 return tag
