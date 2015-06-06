@@ -190,7 +190,7 @@ class RicohAddressBook(object):
             'entryDisplayNameIn': name,
             'mailAddressIn': email,
         }.items():
-            find_element = lambda x: x.find_element(By.NAME, key)
+            find_element = lambda x, y = key: x.find_element(By.NAME, y)
             WebDriverWait(self.__driver, 10).until(find_element)
             element = find_element(self.__driver)
             element.clear()
